@@ -1,0 +1,412 @@
+//fonts &
+@font-face {
+    font-family: 'Wisdom Script Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Wisdom Script Regular'), url('../fonts/WisdomScriptAJ.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: normal;
+    src: url("../fonts/Montserrat-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'Montserrat Bold'; 
+    font-style: normal;
+    font-weight: normal;
+    src: url("../fonts/Montserrat-Bold.ttf");
+}
+
+@font-face {
+    font-family: 'DroidSerif-Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: url("../fonts/DroidSerif-Italic.ttf");
+}
+
+@font-face {
+    font-family: 'RobotoSlab';
+    font-style: normal;
+    font-weight: normal;
+    src: url("../fonts/RobotoSlab-Regular.ttf");
+}
+
+//variables
+
+//media variables
+$mobile: 425px;
+$tablet: 768px;
+$laptop: 1024px;
+$desktop: 1280px;
+
+//color variables
+
+$whiteColor: #fff;
+$goldColor: #fed136;
+$placeholderColor: #bbbbbb;
+$paragraph: #777777;
+$blackColor: #222222;
+$btnHover: orange;
+$toggleColor: #000;
+
+//font variables
+
+$logoFont: 'Wisdom Script Regular';
+$hyperlinkFont: 'Montserrat', sans-serif;
+$primaryFont: 'Montserrat Bold', sans-serif;
+$subtitleFont: 'DroidSerif-Italic', sans-serif;
+$paragraphFont: 'RobotoSlab', serif;
+
+//mixins
+
+//mixin flex
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+  
+  @mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+//global
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+::selection {
+    background: $goldColor;
+}
+
+:focus {
+    outline: none;
+}
+
+html {
+    font-weight: 400;
+    line-height: 22px;
+    font-size: 14px;
+}
+
+body {
+    font-family: $primaryFont;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    overflow: hidden;
+    position: relative;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    font-family: $paragraph;
+    color: $paragraph;
+}
+
+h2 {
+    font-family: $subtitleFont;
+}
+
+.section-title {
+    text-align: center;
+    font-family: $primaryFont;
+    font-size: 2.85rem;
+    text-transform: uppercase;
+}
+
+.section-subtitle {
+    margin-top: 25px;
+    font-size: 1.1488rem;
+    text-align: center;
+    font-family: $subtitleFont;
+}
+
+.container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 20px;
+    @media (max-width: $tablet) {
+        max-width: 100%;
+    }
+}
+
+//header
+.header {
+    width: 100%;
+    padding: 65px 0;
+    background: #fff;
+    z-index: 10;
+}
+
+.header .container {
+    @include flex-between();
+}
+
+.logo {
+    font-family: $logoFont;
+    color: $goldColor;
+}
+
+.header a {
+    color: $blackColor;
+    font-family: $primaryFont;
+    &:hover {
+        color: $goldColor;
+        transition: .3s;
+    }
+}
+
+.menu-list {
+    display: flex;
+}
+
+.menu-item {
+    margin-left: 55px;
+}
+
+#toggle {
+    display: none;
+}
+
+#toggle:checked ~ .menu {
+    top: 0;
+}
+
+#toggle:checked ~ label .toggle-btn {
+    transform: rotate(45deg);
+}
+
+#toggle:checked ~ label .toggle-btn::before {
+    top: 0;
+}
+
+#toggle:checked ~ label .toggle-btn::after {
+    top: 0;
+    transform: rotate(-90deg);
+}
+
+label {
+    display: none;
+    position: relative;
+    width: 30px;
+    height: 50px;
+}
+
+.toggle-btn {
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: .16em;
+    background: $toggleColor;
+    top: 50%;
+    transition: all .5s;
+}
+
+.toggle-btn::before,
+.toggle-btn::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: .2em;
+    background: $toggleColor;
+    position: absolute;
+    transition: all .5s;
+}
+
+.toggle-btn::before {
+    top: -10px;
+}
+
+.toggle-btn::after {
+    top: 10px;
+}
+@media (max-width: $tablet) {
+    label {
+        display: block;
+        z-index: 11;
+    }
+    .menu {
+        background: $goldColor;
+        position: fixed;
+        width: 100%;
+        right: 0;
+        height: 100vh;
+        top: -150%;
+        transition: top .5s;
+        
+    }
+    .menu-list {
+        @include flex-column();
+        align-items: center;
+        transform: translateY(10%);
+    }
+    .menu-list a {
+        align-items: center;
+        color: #fff;
+        font-weight: 400;
+        font-size: 1.5rem;
+        transition: all .2s ease-in-out;
+        &:hover {
+            color: $blackColor;
+            transform: scale(1.1);
+        }
+    }
+    .menu-item {
+        margin-left: 0;
+        padding: 3em;
+        @include flex-column();
+    }
+}
+//services
+.services {
+    text-align: center;
+}
+.services-list {
+    padding-top: 2rem;
+    @include flex-wrap();
+    @media (max-width: $mobile) {
+        @include flex-column();
+        width: 100%;
+    }
+    @media (max-width: $tablet) {
+        @include flex-center();
+    }
+}
+
+.services-item {
+    width: 33.33%;
+    padding: 0 1.5rem;
+    @media (max-width: $tablet) {
+        width: 50%;
+        &:last-child {
+            padding-top: 1rem;
+        }
+    }
+    @media (max-width: $mobile) {
+        width: 100%;
+    }
+}
+
+.services-list p {
+    font-family: $paragraphFont;
+}
+
+.img-border {
+    @include flex-center();
+    margin: auto;
+    border: 4px solid $goldColor;
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    padding: 1rem;
+}
+
+//contact
+.contact {
+    padding: 110px 0;
+    background: url('../img/mapImage.png')  right bottom / auto no-repeat;
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    @media (max-width: 768px) {
+        background-image: none;
+    }
+}
+
+form {
+    margin-top: 75px;
+    .flex-row {
+        padding-top: 70px;
+        display: flex;
+        gap: 2em;
+        margin-bottom: 30px;
+        @media (max-width: 768px) {
+            flex-direction: column;
+            width: 100%;
+        }
+    }
+    
+    .flex-column {
+        width: 50%;
+        gap: 3em;
+        &:first-child {
+            @include flex-column();
+            gap: 30px;
+            
+        }
+        
+        input,
+        textarea {
+            padding: 20px;
+            color: #333;
+            font-size: 1rem;
+            border-radius: 5px;
+            &::placeholder {
+                font-size: 1rem;
+                color: #bbbbbb;
+                font-family: $primaryFont;
+                text-transform: uppercase;
+                font-weight: 700;
+            }
+        }
+        textarea {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+.flex-row .flex-column {
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+.contact-btn {
+    border-radius: .3em;
+    display: inline-block;
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px 40px;
+    border: none;
+    background: $goldColor;
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+    transition: background .3s;
+    &:hover {
+        background: $btnHover;
+    }
+}
