@@ -180,6 +180,7 @@ h2 {
 }
 
 .header a {
+    text-transform: uppercase;
     color: $blackColor;
     font-family: $primaryFont;
     &:hover {
@@ -294,7 +295,7 @@ label {
     text-align: center;
 }
 .services-list {
-    padding-top: 2rem;
+    padding-top: 5rem;
     @include flex-wrap();
     @media (max-width: $mobile) {
         @include flex-column();

@@ -142,6 +142,7 @@ h2 {
 }
 
 .header a {
+  text-transform: uppercase;
   color: #222222;
   font-family: "Montserrat Bold", sans-serif;
 }
@@ -285,7 +286,7 @@ label {
 }
 
 .services-list {
-  padding-top: 2rem;
+  padding-top: 5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
