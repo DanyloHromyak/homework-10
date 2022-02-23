@@ -270,7 +270,7 @@ label {
   }
   .menu-item {
     margin-left: 0;
-    padding: 3em;
+    padding: 2.5em;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -304,6 +304,7 @@ label {
         -ms-flex-direction: column;
             flex-direction: column;
     width: 100%;
+    padding: 0;
   }
 }
 
@@ -329,9 +330,7 @@ label {
 @media (max-width: 768px) {
   .services-item {
     width: 50%;
-  }
-  .services-item:last-child {
-    padding-top: 1rem;
+    margin-bottom: 5rem;
   }
 }
 

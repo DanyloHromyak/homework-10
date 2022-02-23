@@ -286,7 +286,7 @@ label {
     }
     .menu-item {
         margin-left: 0;
-        padding: 3em;
+        padding: 2.5em;
         @include flex-column();
     }
 }
@@ -300,6 +300,7 @@ label {
     @media (max-width: $mobile) {
         @include flex-column();
         width: 100%;
+        padding: 0;
     }
     @media (max-width: $tablet) {
         @include flex-center();
@@ -311,9 +312,7 @@ label {
     padding: 0 1.5rem;
     @media (max-width: $tablet) {
         width: 50%;
-        &:last-child {
-            padding-top: 1rem;
-        }
+        margin-bottom: 5rem;
     }
     @media (max-width: $mobile) {
         width: 100%;
